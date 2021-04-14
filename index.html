@@ -17,23 +17,23 @@
 <main>
 
     <section class="container content-section">
-            <div class="cart-row">
+            <div class="cart-title">
                 <div class="row">
                     <div class="col-4"><span class="cart-item cart-header cart-column">寄附をする美術館・博物館</span></div>
                     <div class="col-4"><span class=" cart-header cart-column">小計</span></div>
                     <div class="col-4"><span class="cart-quantity cart-header cart-column">口数</span></div>
                 </div>
             </div>
-            <div class="cart-items">
-                <div class="cart-row">
+            <div class="cart-items" id="pushCart">
+                <div class="cart-row" >
                     <div class="row">
                         <div class="col-4">
                             <div class="cart-item cart-column">
-                                <select id="rec_mode" class="map-render"></select>
+                                <select id="rec_mode" class="map-render map-render_0"><option value="0" selected="">選択してください。</option><option value="1000">本</option><option value="2000">車</option><option value="5000">自転車</option></select>
                             </div>
                         </div>
                         <div class="col-4">
-                            <span class="cart-price cart-column show-value" id="show_only">0</span>
+                            <span class="cart-price cart-column show-value show-value_0" id="show_only">0</span>
                         </div>
                         <div class="col-4">
                             
@@ -49,14 +49,37 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="cart-row" >
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="cart-item cart-column">
+                                <select id="rec_mode" class="map-render map-render_0"><option value="0" selected="">選択してください。</option><option value="1000">本</option><option value="2000">車</option><option value="5000">自転車</option></select>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <span class="cart-price cart-column show-value show-value_0" id="show_only">0</span>
+                        </div>
+                        <div class="col-4">
+                            
+                            <div class="cart-quantity cart-column">
+                                <div class="d-flex">
+                                    <div class="dec button">-</div>
+                                    <input class="cart-quantity-input" type="number" value="1">
+                                    <div class="inc button">+</div>
+                                    <button class="btn btn-danger" type="button" value="1">× 削除</button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
                 
             </div>
             <div class="cart-total mt-5">
                 <strong class="cart-total-title">合計</strong>
                 <span class="cart-total-price"></span>
             </div>
-            <button class="btn btn-primary shop-item-button" type="button">寄附先を追加する　＋</button>
+            <button class="btn btn-primary shop-item-button" type="button" onclick="pushcartItem()">寄附先を追加する　＋</button>
         </section>
 </main>
 <footer class="main-footer">
