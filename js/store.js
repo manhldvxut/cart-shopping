@@ -7,34 +7,136 @@ function ready(){
 	// remove button
 	var removeCartItemButton = document.getElementsByClassName('btn-danger')
 	console.log(removeCartItemButton)
+
 	// xoa button
-	for(var i = 0; i <removeCartItemButton.length; i++ ){
+	/*for(var i = 0; i <removeCartItemButton.length; i++ ){
 		var button = removeCartItemButton[i]
 		button.addEventListener('click', removeCartItem)
-	}
+	}*/
+
 	// chinh sua input khong bi am
 	var quantityInputs = document.getElementsByClassName('cart-quantity-input')
 	for(var i = 0; i <quantityInputs.length; i++ ){
 		var input = quantityInputs[i]
 		input.addEventListener('change', quantityChanged)
 	}
+
 	// add cart
 	var addToCartButton = document.getElementsByClassName('shop-item-button')
 	for(var i = 0; i<addToCartButton.length; i ++){
 		var button = addToCartButton[i]
-		button.addEventListener('click', addToCartClicked)
+		button.addEventListener('click', addItemToCart)
+
 	}
+	$('.shop-item-button').click(function(){
+		UpDownPlus()
 
-	//purchase
-	document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
+		loadvalue()
 
+		//$('#rec_mode').find('option').not(':nth-child(n+ 5)').remove();
+
+	})
+
+	
+
+	// test
+
+	
+	loadvalue()
+	UpDownPlus()
+
+	$('#rec_mode').click(function(evt){
+		//$('#rec_mode').find('option').not(':nth-child(n+ 5)').remove(); 
+	});
+
+		
+	
+}
+function UpDownPlus(){
+	// tang giam 
+	$('.button').each(function(){
+		$(this).on("click", function() {
+
+	    var $button = $(this);
+	    var oldValue = $button.parent().find("input.cart-quantity-input").val();
+
+	    if ($button.text() == "+") {
+	  	  var newVal = parseFloat(oldValue) + 1;
+	  	} else {
+		   // Don't allow decrementing below zero
+	      if (oldValue > 0) {
+	        var newVal = parseFloat(oldValue) - 1;
+		    } else {
+		        newVal = 0;
+		      }
+		  }
+
+	    	$button.parent().find("input.cart-quantity-input").val(newVal);
+	    	updateCartTotal()
+
+	  	});
+	})
 }
 
+function loadvalue(){
+	$('.cart-items .cart-row').each(function(index){
+		var mapRenderValue = $(this).find('.map-render').length
+		var showValue = $(this).find('.show-value').length
+
+		if(mapRenderValue > 0){
+			$(this).find('.map-render').addClass('map-render_' + index)
+		}
+
+		if(showValue > 0){
+			$(this).find('.show-value').addClass('show-value_' + index)
+		}
+
+		var options =
+		[
+			{
+			    "text"  : "選択してください。",
+			    "value" : "0",
+			    "selected" : true
+			},
+			{
+			    "text"  : "本",
+			    "value" : "1000"
+			},
+			{
+			    "text"     : "車",
+			    "value"    : "2000",
+			    
+			},
+			{
+			    "text"  : "自転車",
+			    "value" : "5000"
+			}
+		];
+
+		var selectBox = document.getElementsByClassName('map-render_' + index)[0];
+		var renderShowValue = document.getElementsByClassName('show-value_' + index)[0];
+		
+		// render select option
+		for(var i = 0, l = options.length; i < l; i++){
+		  var option = options[i];
+		  selectBox.options.add( new Option(option.text, option.value, option.selected) );
+		}
+		
+		$(this).on('change', function() {
+		    var value = $('option:selected', this).val().replace(/Value\s/, '');
+		    $(renderShowValue).text(value)
+		    console.log(value)
+		    updateCartTotal()
+		});
+
+		
+	})
+}
 // xoa button
 function removeCartItem(){
 	var buttonClicked = event.target
-	buttonClicked.parentElement.parentElement.remove()
-	updateCartTotal()
+	buttonClicked.parentElement.parentElement.parentElement.remove()
+	//updateCartTotal()
 }
 // them so luong hang khong bi am
 function quantityChanged(event){
@@ -45,39 +147,39 @@ function quantityChanged(event){
 	updateCartTotal()
 }
 // add cart item
-function addToCartClicked(){
-	var button = event.target
-	var shopItem = button.parentElement.parentElement
-	var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText
-	var price = shopItem.getElementsByClassName('shop-item-price')[0].innerText
-	var imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src
-	console.log(title, price, imageSrc)
-	addItemToCart(title, price, imageSrc)
-	updateCartTotal()
-}
 
-function addItemToCart(title, price, imageSrc){
+
+function addItemToCart(){
 	var cartRow = document.createElement('div')
 	cartRow.classList.add('cart-row')
 	var cartItems = document.getElementsByClassName('cart-items')[0]
 	var cartItemsName = document.getElementsByClassName('cart-item-title')
-	for(var i =0; i < cartItemsName.length; i ++){
-		if(cartItemsName[i].innerText == title){
-			alert('Ban da chon san pham nay')
-			return
-		}
-	}
 	var cartRowContents = `
-	<div class="cart-item cart-column">
-        <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
-        <span class="cart-item-title">${title}</span>
-    </div>
-    <span class="cart-price cart-column">${price}</span>
-    <div class="cart-quantity cart-column">
-        <input class="cart-quantity-input" type="number" value="1">
-        <button class="btn btn-danger" type="button">REMOVE</button>
-    </div>`
+		<div class="row">
+            <div class="col-4">
+                <div class="cart-item cart-column">
+                    <select id="rec_mode" class="map-render"></select>
+                </div>
+            </div>
+            <div class="col-4">
+                <span class="cart-price cart-column show-value show-value_0" id="show_only">0</span>
+            </div>
+            <div class="col-4">
+                
+                <div class="cart-quantity cart-column">
+                    <div class="d-flex">
+                        <div class="dec button">-</div>
+                        <input class="cart-quantity-input" type="number" value="1">
+                        <div class="inc button">+</div>
+                        <button class="btn btn-danger" type="button">× 削除</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+	`
 	cartRow.innerHTML = cartRowContents
+
 	cartItems.append(cartRow)
 	// xoa nut remove
 	cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
@@ -102,13 +204,3 @@ function updateCartTotal(){
 	document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
 }
 
-// Nut purchase
-function purchaseClicked(){
-	alert('Cam on ban da mua hang')
-	var cartItems = document.getElementsByClassName('cart-items')[0]
-	while(cartItems.hasChildNodes()){
-		cartItems.removeChild(cartItems.firstChild)
-	}
-	updateCartTotal()
-
-}

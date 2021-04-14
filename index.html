@@ -15,78 +15,48 @@
 </head>
 <body>  
 <main>
+
     <section class="container content-section">
-        <h2 class="section-header">MUSIC</h2>
-        <div class="shop-items row">
-            <div class="shop-item col-md-3">
-                <span class="shop-item-title">Album 1</span>
-                <img class="shop-item-image" src="Images/Album 1.png">
-                <div class="shop-item-details">
-                    <span class="shop-item-price">$12.99</span>
-                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
-                </div>
-            </div>
-            <div class="shop-item col-md-3">
-                <span class="shop-item-title">Album 2</span>
-                <img class="shop-item-image" src="Images/Album 2.png">
-                <div class="shop-item-details">
-                    <span class="shop-item-price">$14.99</span>
-                    <button class="btn btn-primary shop-item-button"type="button">ADD TO CART</button>
-                </div>
-            </div>
-            <div class="shop-item col-md-3">
-                <span class="shop-item-title">Album 3</span>
-                <img class="shop-item-image" src="Images/Album 3.png">
-                <div class="shop-item-details">
-                    <span class="shop-item-price">$9.99</span>
-                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
-                </div>
-            </div>
-            <div class="shop-item col-md-3">
-                <span class="shop-item-title">Album 4</span>
-                <img class="shop-item-image" src="Images/Album 4.png">
-                <div class="shop-item-details">
-                    <span class="shop-item-price">$19.99</span>
-                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="container content-section">
-        <h2 class="section-header">MERCH</h2>
-        <div class="shop-items row">
-            <div class="shop-item col-md-3">
-                <span class="shop-item-title">T-Shirt</span>
-                <img class="shop-item-image" src="Images/Shirt.png">
-                <div class="shop-item-details">
-                    <span class="shop-item-price">$19.99</span>
-                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
-                </div>
-            </div>
-            <div class="shop-item col-md-3">
-                <span class="shop-item-title">Coffee Cup</span>
-                <img class="shop-item-image" src="Images/Cofee.png">
-                <div class="shop-item-details">
-                    <span class="shop-item-price">$6.99</span>
-                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="container content-section">
-            <h2 class="section-header">CART</h2>
             <div class="cart-row">
-                <span class="cart-item cart-header cart-column">ITEM</span>
-                <span class="cart-price cart-header cart-column">PRICE</span>
-                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+                <div class="row">
+                    <div class="col-4"><span class="cart-item cart-header cart-column">寄附をする美術館・博物館</span></div>
+                    <div class="col-4"><span class=" cart-header cart-column">小計</span></div>
+                    <div class="col-4"><span class="cart-quantity cart-header cart-column">口数</span></div>
+                </div>
             </div>
             <div class="cart-items">
+                <div class="cart-rowsss">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="cart-item cart-column">
+                                <select id="rec_mode" class="map-render"></select>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <span class="cart-price cart-column show-value" id="show_only">0</span>
+                        </div>
+                        <div class="col-4">
+                            
+                            <div class="cart-quantity cart-column">
+                                <div class="d-flex">
+                                    <div class="dec button">-</div>
+                                    <input class="cart-quantity-input" type="number" value="1">
+                                    <div class="inc button">+</div>
+                                    <button class="btn btn-danger" type="button" value="1">× 削除</button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
             </div>
-            <div class="cart-total">
-                <strong class="cart-total-title">Total</strong>
+            <div class="cart-total mt-5">
+                <strong class="cart-total-title">合計</strong>
                 <span class="cart-total-price"></span>
             </div>
-            <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+            <button class="btn btn-primary shop-item-button" type="button">寄附先を追加する　＋</button>
         </section>
 </main>
 <footer class="main-footer">
