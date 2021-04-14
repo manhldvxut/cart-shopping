@@ -29,7 +29,7 @@ function ready(){
 
 	}
 	$('.shop-item-button').click(function(){
-		UpDownPlus()
+		//UpDownPlus()
 
 		loadvalue()
 
@@ -44,11 +44,6 @@ function ready(){
 	
 	loadvalue()
 	UpDownPlus()
-
-	$('#rec_mode').click(function(evt){
-		//$('#rec_mode').find('option').not(':nth-child(n+ 5)').remove(); 
-	});
-
 		
 	
 }
@@ -133,11 +128,7 @@ function loadvalue(){
 	})
 }
 // xoa button
-function removeCartItem(){
-	var buttonClicked = event.target
-	buttonClicked.parentElement.parentElement.parentElement.remove()
-	//updateCartTotal()
-}
+
 // them so luong hang khong bi am
 function quantityChanged(event){
 	var input = event.target
@@ -182,7 +173,7 @@ function addItemToCart(){
 
 	cartItems.append(cartRow)
 	// xoa nut remove
-	cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
+	//cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
 	// thay doi so luong
 	cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
 }
