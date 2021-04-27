@@ -3,114 +3,39 @@
     <head>
         <title>The Generics | Store</title>
         <meta name="description" content="This is the description">
-        <link rel="stylesheet" href="styles.css" />
-        <script src="store.js" async></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <script type="text/javascript" src="cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+        <link rel="stylesheet" href="css/style-top.css" />
+        <script src="js/store.js" async></script>
     </head>
     <body>
-        <header class="main-header">
-            <nav class="main-nav nav">
-                <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="store.html">STORE</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                </ul>
-            </nav>
-            <h1 class="band-name band-name-large">The Generics</h1>
-        </header>
-        <section class="container content-section">
-            <h2 class="section-header">MUSIC</h2>
-            <div class="shop-items">
-                <div class="shop-item">
-                    <span class="shop-item-title">Album 1</span>
-                    <img class="shop-item-image" src="Images/Album 1.png">
-                    <div class="shop-item-details">
-                        <span class="shop-item-price">$12.99</span>
-                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+        <div class="container pt-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="slick">
+                    <div class="item">
+                        <div class="bg" style="background-image:url(https://images.pexels.com/photos/4319752/pexels-photo-4319752.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)"></div>
                     </div>
-                </div>
-                <div class="shop-item">
-                    <span class="shop-item-title">Album 2</span>
-                    <img class="shop-item-image" src="Images/Album 2.png">
-                    <div class="shop-item-details">
-                        <span class="shop-item-price">$14.99</span>
-                        <button class="btn btn-primary shop-item-button"type="button">ADD TO CART</button>
+                    <div class="item">
+                        <div class="bg" style="background-image:url(https://images.pexels.com/photos/1402850/pexels-photo-1402850.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)"></div>
                     </div>
-                </div>
-                <div class="shop-item">
-                    <span class="shop-item-title">Album 3</span>
-                    <img class="shop-item-image" src="Images/Album 3.png">
-                    <div class="shop-item-details">
-                        <span class="shop-item-price">$9.99</span>
-                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                    <div class="item">
+                        <div class="bg" style="background-image:url(https://images.pexels.com/photos/2422915/pexels-photo-2422915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)"></div>
                     </div>
-                </div>
-                <div class="shop-item">
-                    <span class="shop-item-title">Album 4</span>
-                    <img class="shop-item-image" src="Images/Album 4.png">
-                    <div class="shop-item-details">
-                        <span class="shop-item-price">$19.99</span>
-                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                    <div class="item">
+                        <div class="bg" style="background-image:url(https://images.pexels.com/photos/2414442/pexels-photo-2414442.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)"></div>
                     </div>
+                    
                 </div>
             </div>
-        </section>
-        <section class="container content-section">
-            <h2 class="section-header">MERCH</h2>
-            <div class="shop-items">
-                <div class="shop-item">
-                    <span class="shop-item-title">T-Shirt</span>
-                    <img class="shop-item-image" src="Images/Shirt.png">
-                    <div class="shop-item-details">
-                        <span class="shop-item-price">$19.99</span>
-                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
-                    </div>
-                </div>
-                <div class="shop-item">
-                    <span class="shop-item-title">Coffee Cup</span>
-                    <img class="shop-item-image" src="Images/Cofee.png">
-                    <div class="shop-item-details">
-                        <span class="shop-item-price">$6.99</span>
-                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="container content-section">
-            <h2 class="section-header">CART</h2>
-            <div class="cart-row">
-                <span class="cart-item cart-header cart-column">ITEM</span>
-                <span class="cart-price cart-header cart-column">PRICE</span>
-                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
-            </div>
-            <div class="cart-items">
-            </div>
-            <div class="cart-total">
-                <strong class="cart-total-title">Total</strong>
-                <span class="cart-total-price">$0</span>
-            </div>
-            <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
-        </section>
-        <footer class="main-footer">
-            <div class="container main-footer-container">
-                <h3 class="band-name">The Generics</h3>
-                <ul class="nav footer-nav">
-                    <li>
-                        <a href="https://www.youtube.com" target="_blank">
-                            <img src="Images/YouTube Logo.png">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.spotify.com" target="_blank">
-                            <img src="Images/Spotify Logo.png">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com" target="_blank">
-                            <img src="Images/Facebook Logo.png">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </footer>
+        </div>
+
+        <svg version="1.1" id="Layer_1" data-name="Layer 1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" viewbox="0 0 322.05 40.75"><defs><style>.cls-1{font-size:32px;fill:none;font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", system-ui , sans-serif;font-weight:700;letter-spacing:-0.05em;}.cls-2{letter-spacing:-0.06em;}.cls-3{letter-spacing:0.01em;}.cls-4{letter-spacing:0.16em;}.cls-5{letter-spacing:0.15em;}.cls-6{letter-spacing:0.18em;}.cls-7{letter-spacing:0.08em;}.cls-8{letter-spacing:0.08em;}.cls-9{letter-spacing:0.15em;}.cls-10{clip-path:url(#clip-path);}.cls-11{stroke:#000;stroke-miterlimit:10;stroke-width:0.75px;fill:url(#linear-gradient);}</style><clippath id="clip-path" transform="translate(21.81 0.38)"><text class="cls-1" transform="translate(-26.32 30.89) scale(1.01 1)">Ｔ<tspan class="cls-2" x="30.3" y="0">Ｄ</tspan><tspan class="cls-3" x="60.54" y="0">Ｓ</tspan><tspan class="cls-4" x="92.92" y="0">が</tspan><tspan class="cls-5" x="125.51" y="0">選</tspan><tspan class="cls-6" x="162.19" y="0">ば</tspan><tspan class="cls-7" x="196.13" y="0">れ</tspan><tspan class="cls-8" x="227.91" y="0">る</tspan><tspan class="cls-9" x="255.35" y="0">理由</tspan></text></clippath><lineargradient id="linear-gradient" x1="161.03" y1="42.1" x2="161.03" y2="5.35" gradientunits="userSpaceOnUse"><stop offset="0" stop-color="#0b57a0"></stop><stop offset="0.19" stop-color="#0d5da1"></stop><stop offset="0.43" stop-color="#146da5"></stop><stop offset="0.7" stop-color="#1f88aa"></stop><stop offset="0.99" stop-color="#2eadb2"></stop><stop offset="1" stop-color="#2eaeb2"></stop></lineargradient></defs><g class="cls-10"><rect class="cls-11" x="0.38" y="0.38" width="321.3" height="40"></rect></g></svg></div>
+                
+    </div>
     </body>
+
 </html>

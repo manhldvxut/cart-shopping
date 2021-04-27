@@ -4,16 +4,10 @@ if(document.readyState == 'loading'){
 	ready()
 }
 // add cart
-var addToCartButton = document.getElementsByClassName('shop-item-button')
-$(addToCartButton).click(function(){
-	addItemToCart();
-	loopcartItem()
-	buttonPlMi()
-})
+
 
 
 function ready(){
-	addItemToCart();
 	loopcartItem()
 	buttonPlMi()
 
@@ -25,23 +19,17 @@ function ready(){
 	}
 	// show value
 
-	var renderShowValue = document.getElementsByClassName('show-value')[0];
-	for(var i = 0; i < renderShowValue.length; i ++){
-		var input = renderShowValue[i]
-		console.log(input)
-	}
 
-	// loop dropdowns
-	
-	
-	
-	
-	
+	// add other cart
 
-	// save local
-	var cartPrice = document.querySelector('.cart-price');
-	console.log(cartPrice.value)
-
+	$("#addMore").click(function(e) {
+        var newSelect = $("#addCart").clone();
+        $(newSelect).find('#show_only').text(0)
+        $(newSelect).find('.cart-quantity-input').val(1)
+        $("#select-wrapper").append(newSelect);
+	    loopcartItem()
+		buttonPlMi()
+    });
 		
 	
 }
@@ -51,13 +39,12 @@ function buttonPlMi(){
 	$('.button').each(function(){
 		$(this).bind("click", function() {
 
-	    var $button = $(this);
+	    var $button = $(this)
 	    var oldValue = $button.parent().find("input.cart-quantity-input").val();
 
 	    if ($button.text() == "+") {
 	  	  var newVal = parseFloat(oldValue) + 1;
 	  	} else {
-		   // Don't allow decrementing below zero
 	      if (oldValue > 0) {
 	        var newVal = parseFloat(oldValue) - 1;
 		    } else {
@@ -70,27 +57,38 @@ function buttonPlMi(){
 
 	  	});
 	})
-
 }
 // loop item
 function loopcartItem(){
 	$('.cart-items .cart-row').each(function(){
 		var thisRemove = $(this);
-		console.log(thisRemove)
+
 		var renderShowValue = $(this).find('.cart-price')
 		$(this).on('change', function() {
+
+			//value
 		    var value = $('option:selected', this).val().replace(/Value\s/, '');
+
+		    //push value
 		    $(renderShowValue).text(value)
-		    //console.log(value)
+
+		    // update price
 		    updateCartTotal()
 		});
+
 		var btn = $(this).find('.btn-danger')
 		var removeCart = $(this).find('.cart-row')
-		//console.log(removeCart)
+
 		$(btn).bind('click',function(e){
 			$(renderShowValue).text(0)
 			updateCartTotal()
-			thisRemove.remove()
+
+			// first line not remove
+			var btnNum = $('.btn-danger').length
+			if(btnNum > 1){
+				thisRemove.remove()
+			}
+			
 			return;
 		})
 	})
@@ -105,38 +103,8 @@ function quantityChanged(event){
 	}
 	updateCartTotal()
 }
-// add cart item
 
 
-function addItemToCart(){
-	var inputHtml = document.getElementById('pushCart')
-	inputHtml.innerHTML += `
-	<div class="cart-row" >
-		<div class="row">
-			<div class="col-4">
-				<div class="cart-item cart-column">
-					<select id="rec_mode" class="map-render map-render_0"><option value="0" selected="">選択してください。</option><option value="1000">本</option><option value="2000">車</option><option value="5000">自転車</option></select>
-				</div>
-			</div>
-			<div class="col-4">
-				<span class="cart-price cart-column show-value show-value_0" id="show_only">0</span>
-			</div>
-			<div class="col-4">
-				
-				<div class="cart-quantity cart-column">
-					<div class="d-flex">
-						<div class="dec button">-</div>
-						<input class="cart-quantity-input" type="number" value="1">
-						<div class="inc button">+</div>
-						<button class="btn btn-danger" type="button" value="1">× 削除</button>
-					</div>
-				</div>
-				
-			</div>
-		</div>
-	</div>
-	`
-}
 // thay doi gia tien khi xoa button
 function updateCartTotal(){
 	var cartItemContainer = document.getElementsByClassName('cart-items')[0]
@@ -153,4 +121,65 @@ function updateCartTotal(){
 	total = Math.round(total * 100) / 100 // lam tron gia tri
 	document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
 }
+
+
+
+/*
+
+$(function() {
+
+	$(".cart-items .cart-row").each(function(index){
+	
+        // Size selection
+		if (localStorage.getItem('row_'+index+'_size')) {
+			$(this).find('.map-render option').prop('selected', false).eq(localStorage.getItem('row_'+index+'_size')).prop('selected', true);
+            console.log("Row#"+index+" get-size: "+localStorage.getItem('row_'+index+'_size'));
+		}
+
+		$(this).find(".map-render").on('change', function() {
+			localStorage.setItem('row_'+index+'_size', $(this).find('option:selected').index());
+            console.log("Row#"+index+" set size: "+$(this).find('option:selected').index());
+		});
+	});
+});*/
+
+
+
+
+
+$(function() {
+	$('.slick').slick({
+	    dots: false,
+	    infinite: true,
+		touchThreshold : 100,
+	    speed: 300,
+	    slidesToShow: 3,
+	    slidesToScroll: 3,
+		centerMode: true,
+		nextArrow: '<button class="slick-next"><i class="fas fa-chevron-right"></i></button>',
+		prevArrow: '<button class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
+	    responsive: [{
+	            breakpoint: 1024,
+	            settings: {
+	                slidesToShow: 4,
+	                slidesToScroll: 4,
+	            }
+	        },
+	        {
+	            breakpoint: 600,
+	            settings: {
+	                slidesToShow: 2,
+	                slidesToScroll: 2
+	            }
+	        },
+	        {
+	            breakpoint: 480,
+	            settings: {
+	                slidesToShow: 1,
+	                slidesToScroll: 1
+	            }
+	        }
+	    ]
+	});
+})
 
